@@ -13,13 +13,14 @@ on:
         required: false
 
 jobs:
-  terraform:
+  terraform-plan:
+    name: Terraform Plan
     runs-on: self-hosted
+    if: github.event_name == 'pull_request'
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.aws_access_key_id }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.aws_secret_access_key }}
       AWS_SESSION_TOKEN: ${{ secrets.aws_session_token }}
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -27,10 +28,23 @@ jobs:
       - name: Terraform Initialization
         run: terraform init
 
-      - name: Terraform Planning
-        if: github.event_name == 'pull_request'
+      - name: Terraform Plan
         run: terraform plan
 
+  terraform-apply:
+    name: Terraform Apply
+    runs-on: self-hosted
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'  # Only runs on merge to main
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.aws_access_key_id }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.aws_secret_access_key }}
+      AWS_SESSION_TOKEN: ${{ secrets.aws_session_token }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Terraform Initialization
+        run: terraform init
+
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve
