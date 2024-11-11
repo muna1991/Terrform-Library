@@ -62,6 +62,7 @@ jobs:
         if: always()  # Ensures cleanup runs even if previous steps fail
         run: |
           echo "Cleaning up repository files from runner workspace..."
-          ls
+          ls -al
+          pwd
           echo ${{ github.workspace }}
           rm -rf ${{ github.workspace }}/*
