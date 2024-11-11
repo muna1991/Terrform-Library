@@ -56,10 +56,11 @@ jobs:
       - name: Terraform Initialization
         run: terraform init
 
-      - name: Terraform Apply
-        run: terraform apply -var="bucket_name=${{ inputs.bucket_name }}" -var="region=${{ inputs.region }}" -auto-approve 
+      # - name: Terraform Apply
+      #   run: terraform apply -var="bucket_name=${{ inputs.bucket_name }}" -var="region=${{ inputs.region }}" -auto-approve 
       - name: Cleanup Repository Files from Runner
         if: always()  # Ensures cleanup runs even if previous steps fail
         run: |
           echo "Cleaning up repository files from runner workspace..."
+          ls
           rm -rf ${{ github.workspace }}/*
