@@ -63,4 +63,5 @@ jobs:
         run: |
           echo "Cleaning up repository files from runner workspace..."
           ls
+          echo ${{ github.workspace }}
           rm -rf ${{ github.workspace }}/*
