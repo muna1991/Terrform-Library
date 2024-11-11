@@ -1,9 +1,9 @@
 # Terrform-Library
-1. Reusable Workflows and Workflow Invocation (workflow_call)
+## 1. Reusable Workflows and Workflow Invocation (workflow_call)
 
-reusable workflow leverages workflow_call, allowing other workflows to call it with specified inputs and secrets.
+      reusable workflow leverages workflow_call, allowing other workflows to call it with specified inputs and secrets.
 
-Reusable Workflows: Documentation for a reusable workflow.
+      Reusable Workflows: Documentation for a reusable workflow.
 
 GitHub Docs: [GitHub Docs: Reusable Workflows](https://docs.github.com/en/actions/using-workflows/reusing-workflows#calling-a-reusable-workflow)
 
@@ -34,6 +34,7 @@ The actions/checkout@v3 action pulls the repository’s code so that the Terrafo
 
 Checkout Action: Documentation for the checkout action, a common first step in workflows that need repository files.
 GitHub Docs: [actions/checkout](https://github.com/actions/checkout)
+
 5. Terraform Commands in GitHub Actions
 Both terraform-plan and terraform-apply jobs run Terraform commands, which are customized using inputs passed from the calling workflow.
 
@@ -48,6 +49,8 @@ Terraform CLI Input Variables: Your Terraform commands use -var flags to pass bu
 6. We can call this Reusable Workflow from Another Workflow
 
 Calling Reusable Workflows: Documentation for calling a reusable workflow from another workflow.
+
 GitHub Docs: [Calling Reusable Workflows](https://docs.github.com/en/actions/using-workflows/reusing-workflows#calling-a-reusable-workflow)
+
 Summary
 Each part of your GitHub Actions workflow aligns with specific documentation sections. Following these links will help you understand and customize reusable workflows with Terraform, including parameter passing, job configuration, and runner setup.
