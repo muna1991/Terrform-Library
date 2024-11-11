@@ -66,4 +66,4 @@ jobs:
           pwd
           echo ${{ github.workspace }}
           rm -rf ${{ github.workspace }}/*
-          rmdir -rf ${{ github.workspace }}
+          rm -rf ${{ github.workspace }}
