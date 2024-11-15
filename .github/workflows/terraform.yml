@@ -5,6 +5,10 @@ name: "Terraform S3 Bucket Deployment"
 on:
   workflow_call:
     inputs:
+      target:
+        description: "Target environment for deployment"
+        required: true
+        type: string
       bucket_name:
         description: "The name of the S3 bucket to create"
         required: true
@@ -63,6 +67,7 @@ jobs:
         run: |
           echo "Cleaning up repository files from runner workspace..."
           ls -al
+          echo "deploying environment ${{ input.target }}"
           pwd
           echo ${{ github.workspace }}
           rm -rf ${{ github.workspace }}/*
