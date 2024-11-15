@@ -67,7 +67,7 @@ jobs:
         run: |
           echo "Cleaning up repository files from runner workspace..."
           ls -al
-          echo "deploying environment ${{ input.target }}"
+          echo "deploying environment ${{ inputs.target }}"
           pwd
           echo ${{ github.workspace }}
           rm -rf ${{ github.workspace }}/*
